@@ -19,5 +19,6 @@ export const movieSlice = createSlice({
 export const { addMovies } = movieSlice.actions;
 
 // Q-- if i want to get a value from the store how can i do that? --- By this
-export const getMovies = (state) => state.movies;
+// 1.movies slice name 2.movies state
+export const getMovies = (state) => state.movies.movies;
 export default movieSlice.reducer;
