@@ -12,6 +12,7 @@ const Home = () => {
 
   // when i get the value from api i want to dispatch so
   // that it will go to the reducer and the reducer will update the state
+  // use dispatch is used to update the state
   const dispatch = useDispatch();
 
   useEffect(() => {
