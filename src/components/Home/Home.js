@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import movieApi from "../../common/apis/movieApi";
 import { APIKey } from "../../common/apis/MovieApiKey";
-import { addMovies, fetchAsyncMovies } from "../../features/movies/movieSlice";
+import {
+  addMovies,
+  fetchAsyncMovies,
+  fetchAsyncShows,
+} from "../../features/movies/movieSlice";
 import MovieListing from "../MovieListing/MovieListing";
 
 const baseUrl = "https://www.omdbapi.com/";
@@ -16,17 +20,8 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // const fetchMovies = async (req, res) => {
-    //   // s= is search term
-    //   const response = await movieApi
-    //     .get(`${baseUrl}?apikey=${APIKey}&s=${movieText}&type=movie`)
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   dispatch(addMovies(response.data));
-    // };
-    // fetchMovies();
     dispatch(fetchAsyncMovies());
+    dispatch(fetchAsyncShows());
   }, [dispatch]);
   return (
     <div>
