@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import {
   fetchAsyncMovieOrShows,
   getMoviesOrshows,
+  removeSeletedMovie,
 } from "../../features/movies/movieSlice";
 
 const MovieDetail = () => {
@@ -13,6 +14,10 @@ const MovieDetail = () => {
 
   useEffect(() => {
     dispatch(fetchAsyncMovieOrShows(imdbID));
+    // clean up function
+    return () => {
+      dispatch(removeSeletedMovie()); //
+    };
   }, [dispatch]);
 
   const data = useSelector(getMoviesOrshows);

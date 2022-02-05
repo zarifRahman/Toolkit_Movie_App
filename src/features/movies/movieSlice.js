@@ -46,8 +46,8 @@ export const movieSlice = createSlice({
   initialState,
   reducers: {
     // actions
-    addMovies: (state, { payload }) => {
-      state.movies = payload;
+    removeSeletedMovie: (state) => {
+      state.moviesOrshows = {};
     },
   },
   extraReducers: {
@@ -82,7 +82,7 @@ export const movieSlice = createSlice({
 });
 
 // actions which we can import in our home component
-export const { addMovies } = movieSlice.actions;
+export const { removeSeletedMovie } = movieSlice.actions;
 
 // Q-- if i want to get a value from the store how can i do that? --- By this
 // 1.movies is the name of the reducer 2.movies is the property
