@@ -2,12 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import movieApi from "../../common/apis/movieApi";
 import { APIKey } from "../../common/apis/MovieApiKey";
 
+const baseUrl = "https://www.omdbapi.com/";
+
 export const fetchAsyncMovies = createAsyncThunk(
   "movies/fetchAsyncMovies",
   async () => {
     const movieText = "Harry";
     const response = await movieApi.get(
-      `?apiKey=${APIKey}&s=${movieText}&type=movie`
+      `${baseUrl}?apiKey=${APIKey}&s=${movieText}&type=movie`
     );
     return response.data;
   }
@@ -32,6 +34,7 @@ export const movieSlice = createSlice({
     },
     [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
       console.log("Fetched Successfully!");
+      // if fulfilled we assign the response payload to our initial state
       return { ...state, movies: payload };
     },
     [fetchAsyncMovies.rejected]: () => {
