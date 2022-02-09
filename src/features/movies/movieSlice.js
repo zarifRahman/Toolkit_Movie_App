@@ -6,20 +6,20 @@ const baseUrl = "https://www.omdbapi.com/";
 
 export const fetchAsyncMovies = createAsyncThunk(
   "movies/fetchAsyncMovies",
-  async () => {
-    const movieText = "Harry";
+  async (term) => {
+    // const movieText = "Harry";
     const response = await movieApi.get(
-      `${baseUrl}?apiKey=${APIKey}&s=${movieText}&type=movie`
+      `${baseUrl}?apiKey=${APIKey}&s=${term}&type=movie`
     );
     return response.data;
   }
 );
 export const fetchAsyncShows = createAsyncThunk(
   "movies/fetchAsyncShows",
-  async () => {
-    const movieText = "Friends";
+  async (term) => {
+    // const movieText = "Friends";
     const response = await movieApi.get(
-      `${baseUrl}?apiKey=${APIKey}&s=${movieText}&type=series`
+      `${baseUrl}?apiKey=${APIKey}&s=${term}&type=series`
     );
     return response.data;
   }
